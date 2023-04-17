@@ -1,4 +1,4 @@
-$PLATFORM_IO_VERSION=6.1.5
+$PLATFORM_IO_VERSION="6.1.5"
 $PYTHON_URL_BASE="https://github.com/indygreg/python-build-standalone/releases/download"
 $PYTHON_RELEASE="20230116"
 $PYTHON_VERSION="3.11.1"
@@ -11,10 +11,10 @@ echo "downloading ${PYTHON_URL}"
 mkdir build
 cd build
 Invoke-WebRequest -Uri $PYTHON_URL -OutFile python.tar.gz
-tar -xzvf python.tar.gz
+tar -xzf python.tar.gz
 Remove-Item -Recurse -Force python.tar.gz
 
-& $PYTHON -m pip install platformio==$PLATFORM_IO_VERSION
+& $PYTHON -m pip install platformio==${PLATFORM_IO_VERSION}
 $Env:PLATFORMIO_CORE_DIR="$pwd\platformio"
 $Env:PYTHONUNBUFFERED=1
 cd ..\Ardwiino
