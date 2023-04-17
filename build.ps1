@@ -13,14 +13,14 @@ cd build
 Invoke-WebRequest -Uri $PYTHON_URL -OutFile python.tar.gz
 tar -xzf python.tar.gz
 Remove-Item -Recurse -Force python.tar.gz
-start $PYTHON -m pip install platformio==$PLATFORM_IO_VERSION
+& $PYTHON -m pip install platformio==$PLATFORM_IO_VERSION
 $Env:PLATFORMIO_CORE_DIR="$pwd/platformio"
 $Env:PYTHONUNBUFFERED=1
 cd ../Ardwiino
-start $PYTHON -m platformio pkg install
+& $PYTHON -m platformio pkg install
 Remove-Item -Recurse -Force .pio
 Remove-Item -Recurse -Force ../build/platformio/.cache
-start $PYTHON -m platformio pkg install
+& $PYTHON -m platformio pkg install
 cd ../build
 Remove-Item -Recurse -Force platformio/packages/framework-arduinopico/pico-sdk/lib/btstack/port
 Remove-Item -Recurse -Force platformio/packages/framework-arduinopico/pico-sdk/lib/btstack/example
