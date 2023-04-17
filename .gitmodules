@@ -1,0 +1,3 @@
+[submodule "Ardwiino"]
+	path = Ardwiino
+	url = https://github.com/sanjay900/Ardwiino/
