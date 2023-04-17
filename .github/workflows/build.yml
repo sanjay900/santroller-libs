@@ -17,7 +17,7 @@ jobs:
         shell: bash
       - uses: actions/upload-artifact@v1
         with:
-          name: windows
+          name: ${{ matrix.os }}
           path: build/platformio.tar.xz
   build-windows:
     runs-on: windows-latest
@@ -31,7 +31,7 @@ jobs:
         run: ./build.ps1
       - uses: actions/upload-artifact@v1
         with:
-          name: windows
+          name: windows-latest
           path: build/platformio.tar.xz
 
   release:
@@ -43,7 +43,12 @@ jobs:
         uses: actions/download-artifact@v2
       - name: Display structure of downloaded files
         run: ls -R
+      - name: Rename artifacts script
+        run: |
+          mv windows-latest/platformio.tar.xz platformio-windows.tar.xz
+          mv ubuntu-latest/platformio.tar.xz platformio-linux.tar.xz
+          mv macos-latest/platformio.tar.xz platformio-macos.tar.xz
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: "**/platformio.tar.xz"
+          files: "platformio-*.tar.xz"
