@@ -3,24 +3,24 @@ $PYTHON_URL_BASE="https://github.com/indygreg/python-build-standalone/releases/d
 $PYTHON_RELEASE="20230116"
 $PYTHON_VERSION="3.11.1"
 $PYTHON_ARCH="x86_64"
-$PYTHON="`pwd`/build/python/bin/python3"
+$PYTHON="$pwd/build/python/bin/python3"
 $PYTHON_ARCH="$PYTHON_ARCH-pc-windows-msvc-shared"
 
 $PYTHON_URL="${PYTHON_URL_BASE}/${PYTHON_RELEASE}/cpython-${PYTHON_VERSION}+$PYTHON_RELEASE-$PYTHON_ARCH-install_only.tar.gz"
 echo "downloading ${PYTHON_URL}"
 mkdir build
 cd build
-wget $PYTHON_URL -O python.tar.gz
+Invoke-WebRequest -Uri $PYTHON_URL -OutFile python.tar.gz
 tar -xzf python.tar.gz
 rm -rf python.tar.gz
-./$PYTHON -m pip install platformio==$PLATFORM_IO_VERSION
-export PLATFORMIO_CORE_DIR=`pwd`/platformio
-export PYTHONUNBUFFERED=1
+start $PYTHON -m pip install platformio==$PLATFORM_IO_VERSION
+$Env:PLATFORMIO_CORE_DIR="$pwd/platformio"
+$Env:PYTHONUNBUFFERED=1
 cd ../Ardwiino
-./$PYTHON -m platformio pkg install
+start $PYTHON -m platformio pkg install
 rm -rf .pio
 rm -rf ../build/platformio/.cache
-./$PYTHON -m platformio pkg install
+start $PYTHON -m platformio pkg install
 cd ../build
 rm -rf platformio/packages/framework-arduinopico/pico-sdk/lib/btstack/port
 rm -rf platformio/packages/framework-arduinopico/pico-sdk/lib/btstack/example

@@ -16,10 +16,7 @@ jobs:
         run: ./build.sh
         shell: bash
   build-windows:
-    strategy:
-      matrix:
-        os: [windows-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
