@@ -3,7 +3,7 @@ $PYTHON_URL_BASE="https://github.com/indygreg/python-build-standalone/releases/d
 $PYTHON_RELEASE="20230116"
 $PYTHON_VERSION="3.11.1"
 $PYTHON_ARCH="x86_64"
-$PYTHON="$pwd\build\python\bin\python3"
+$PYTHON="$pwd\build\python\python.exe"
 $PYTHON_ARCH="$PYTHON_ARCH-pc-windows-msvc-shared"
 
 $PYTHON_URL="${PYTHON_URL_BASE}/${PYTHON_RELEASE}/cpython-${PYTHON_VERSION}+$PYTHON_RELEASE-$PYTHON_ARCH-install_only.tar.gz"
