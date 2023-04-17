@@ -7,8 +7,10 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Display structure of downloaded files
-        run: ls -R
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
       - name: Run build script
         run: build.sh
         shell: bash
