@@ -41,9 +41,7 @@ jobs:
     steps:
       - name: Download Artifacts
         uses: actions/download-artifact@v2
-      - name: Display structure of downloaded files
-        run: ls -R
-      - name: Rename artifacts script
+      - name: Rename artifacts
         run: |
           mv windows-latest/platformio.tar.xz platformio-windows.tar.xz
           mv ubuntu-latest/platformio.tar.xz platformio-linux.tar.xz
@@ -52,3 +50,5 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: "platformio-*.tar.xz"
+          tag_name: latest
+          target_commitish: main
