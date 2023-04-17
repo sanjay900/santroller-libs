@@ -37,4 +37,4 @@ rm -rf platformio/packages/framework-arduinoespressif32/tools/sdk/esp32c3
 rm -rf platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2
 rm -rf platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3
 export XZ_OPT="-T0 -9"
-tar cfJ platformio.tar.xz platformio
+tar cfJ platformio.tar.xz platformio python
