@@ -14,15 +14,6 @@ case "$OSTYPE" in
   *)        echo "unknown: $OSTYPE" ;;
 esac
 
-if [ "$(uname)" == "Darwin" ]; then
-    PYTHON_ARCH="$PYTHON_ARCH-apple-darwin"
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    PYTHON_ARCH="$PYTHON_ARCH-unknown-linux-gnu"
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
-    PYTHON_ARCH="$PYTHON_ARCH-pc-windows-msvc-shared"
-    PYTHON="python/python.exe"
-fi
-
 PYTHON_URL="$PYTHON_URL_BASE/$PYTHON_RELEASE/cpython-$PYTHON_VERSION+$PYTHON_RELEASE-$PYTHON_ARCH-install_only.tar.gz"
 echo downloading $PYTHON_URL
 mkdir build
