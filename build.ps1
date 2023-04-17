@@ -12,23 +12,23 @@ mkdir build
 cd build
 Invoke-WebRequest -Uri $PYTHON_URL -OutFile python.tar.gz
 tar -xzf python.tar.gz
-rm -rf python.tar.gz
+Remove-Item -Recurse -Force python.tar.gz
 start $PYTHON -m pip install platformio==$PLATFORM_IO_VERSION
 $Env:PLATFORMIO_CORE_DIR="$pwd/platformio"
 $Env:PYTHONUNBUFFERED=1
 cd ../Ardwiino
 start $PYTHON -m platformio pkg install
-rm -rf .pio
-rm -rf ../build/platformio/.cache
+Remove-Item -Recurse -Force .pio
+Remove-Item -Recurse -Force ../build/platformio/.cache
 start $PYTHON -m platformio pkg install
 cd ../build
-rm -rf platformio/packages/framework-arduinopico/pico-sdk/lib/btstack/port
-rm -rf platformio/packages/framework-arduinopico/pico-sdk/lib/btstack/example
-rm -rf platformio/packages/framework-arduinopico/pico-sdk/lib/btstack/chipset
-rm -rf platformio/packages/framework-arduinopico/docs
-rm -rf platformio/packages/framework-arduino-avr/firmwares
-rm -rf platformio/packages/framework-arduino-avr/bootloaders
-rm -rf platformio/packages/framework-arduinoespressif32/tools/sdk/esp32c3
-rm -rf platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2
-rm -rf platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3
+Remove-Item -Recurse -Force platformio/packages/framework-arduinopico/pico-sdk/lib/btstack/port
+Remove-Item -Recurse -Force platformio/packages/framework-arduinopico/pico-sdk/lib/btstack/example
+Remove-Item -Recurse -Force platformio/packages/framework-arduinopico/pico-sdk/lib/btstack/chipset
+Remove-Item -Recurse -Force platformio/packages/framework-arduinopico/docs
+Remove-Item -Recurse -Force platformio/packages/framework-arduino-avr/firmwares
+Remove-Item -Recurse -Force platformio/packages/framework-arduino-avr/bootloaders
+Remove-Item -Recurse -Force platformio/packages/framework-arduinoespressif32/tools/sdk/esp32c3
+Remove-Item -Recurse -Force platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2
+Remove-Item -Recurse -Force platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3
 7z.exe a -ttar -so platformio.tar.xz platformio | 7z.exe a -txz -si platformio.tar.xz -mx9
