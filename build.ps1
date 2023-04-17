@@ -32,4 +32,5 @@ Remove-Item -Recurse -Force platformio\packages\framework-arduino-avr\bootloader
 Remove-Item -Recurse -Force platformio\packages\framework-arduinoespressif32\tools\sdk\esp32c3
 Remove-Item -Recurse -Force platformio\packages\framework-arduinoespressif32\tools\sdk\esp32s2
 Remove-Item -Recurse -Force platformio\packages\framework-arduinoespressif32\tools\sdk\esp32s3
-7z.exe a -ttar -so -an platformio python | 7z.exe a -txz -si platformio.tar.xz -mx9
+tar cf platformio.tar platformio python
+7z.exe a -txz -mx9 platformio.tar.xz platformio.tar
