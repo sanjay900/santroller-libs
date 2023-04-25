@@ -18,6 +18,8 @@ cd build
 wget $PYTHON_URL -O python.tar.gz
 tar -xzf python.tar.gz
 rm -rf python.tar.gz
+$PYTHON -m pip install pyusb
+$PYTHON -m pip install libusb_package
 $PYTHON -m pip install platformio==$PLATFORM_IO_VERSION
 export PLATFORMIO_CORE_DIR=`pwd`/platformio
 export PYTHONUNBUFFERED=1

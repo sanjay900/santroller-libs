@@ -13,7 +13,8 @@ cd build
 Invoke-WebRequest -Uri $PYTHON_URL -OutFile python.tar.gz
 tar -xzf python.tar.gz
 Remove-Item -Recurse -Force python.tar.gz
-
+& $PYTHON -m pip install pyusb
+& $PYTHON -m pip install libusb_package
 & $PYTHON -m pip install platformio==${PLATFORM_IO_VERSION}
 $Env:PLATFORMIO_CORE_DIR="$pwd\platformio"
 $Env:PYTHONUNBUFFERED=1
