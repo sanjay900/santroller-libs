@@ -39,7 +39,7 @@ rm -rf platformio/packages/framework-arduinoespressif32/tools/sdk/esp32c3
 rm -rf platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2
 rm -rf platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3
 export XZ_OPT="-T0 -9"
-tar cfJ platformio.tar.xz platformio python
+tar cf platformio.tar platformio python
 cd ../default
 $PYTHON -m platformio run
 cd ../build
@@ -54,4 +54,5 @@ for filename in ../default/.pio/build/**/*.uf2; do
     dir=$(basename $(dirname $filename))
     cp $filename default_firmwares/$dir.uf2
 done
-tar rfJ platformio.tar.xz default_firmwares
+tar rf platformio.tar default_firmwares
+xz -z -9 -T0 platformio.tar
