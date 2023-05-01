@@ -36,3 +36,19 @@ Remove-Item -Recurse -Force platformio\packages\framework-arduinoespressif32\too
 Copy-Item ..\windows\* platformio
 tar cf platformio.tar platformio python
 7z.exe a -txz -mx9 platformio.tar.xz platformio.tar
+cd ..\default
+& $PYTHON -m platformio run
+cd ..\build
+New-Item -Name default_firmwares -ItemType "directory"
+Get-ChildItem -Path '..\default\.pio' -Filter *.hex -Recurse -ErrorAction SilentlyContinue -Force | ForEach-Object { 
+    $dir = Split-Path $_.DirectoryName -Leaf 
+    Copy-Item $_ -Destination "default_firmwares\$dir.hex"
+}
+Get-ChildItem -Path '..\default\.pio' -Filter *.uf2 -Recurse -ErrorAction SilentlyContinue -Force | ForEach-Object { 
+    $dir = Split-Path $_.DirectoryName -Leaf 
+    Copy-Item $_ -Destination "default_firmwares\$dir.uf2"
+}
+
+Get-ChildItem -Path '..\uno_usb_firmwares' -Recurse -ErrorAction SilentlyContinue -Force | ForEach-Object { 
+    Copy-Item $_ -Destination "default_firmwares"
+}
