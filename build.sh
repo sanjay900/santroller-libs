@@ -54,4 +54,4 @@ for filename in ../default/.pio/build/**/*.uf2; do
     dir=$(basename $(dirname $filename))
     cp $filename default_firmwares/$dir.uf2
 done
-tar crfJ platformio.tar.xz default_firmwares
+tar rfJ platformio.tar.xz default_firmwares

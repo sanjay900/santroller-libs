@@ -50,5 +50,5 @@ Get-ChildItem -Path '..\default\.pio' -Filter *.uf2 -Recurse -ErrorAction Silent
 Get-ChildItem -Path '..\uno_usb_firmwares' -Recurse -ErrorAction SilentlyContinue -Force | ForEach-Object { 
     Copy-Item $_ -Destination "default_firmwares"
 }
-tar rcf platformio.tar default_firmwares
+tar rf platformio.tar default_firmwares
 7z.exe a -txz -mx9 platformio.tar.xz platformio.tar
