@@ -46,9 +46,18 @@ jobs:
           mv windows-latest/platformio.tar.xz platformio-windows.tar.xz
           mv ubuntu-latest/platformio.tar.xz platformio-linux.tar.xz
           mv macos-latest/platformio.tar.xz platformio-macos.tar.xz
+      - uses: dev-drprasad/delete-tag-and-release@v0.2.1
+        with:
+          delete_release: true
+          tag_name: latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: "platformio-*.tar.xz"
           tag_name: latest
-          target_commitish: main
+          prerelease: true
+          name: "Latest Build"
+          files: "platformio-*.tar.xz"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
