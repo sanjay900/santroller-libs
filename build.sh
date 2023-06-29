@@ -35,9 +35,6 @@ rm -rf platformio/packages/framework-arduinopico/pico-sdk/lib/btstack/chipset
 rm -rf platformio/packages/framework-arduinopico/docs
 rm -rf platformio/packages/framework-arduino-avr/firmwares
 rm -rf platformio/packages/framework-arduino-avr/bootloaders
-rm -rf platformio/packages/framework-arduinoespressif32/tools/sdk/esp32c3
-rm -rf platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2
-rm -rf platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3
 export XZ_OPT="-T0 -9"
 tar cf platformio.tar platformio python
 cd ../default

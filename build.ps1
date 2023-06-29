@@ -30,9 +30,6 @@ Remove-Item -Recurse -Force platformio\packages\framework-arduinopico\pico-sdk\l
 Remove-Item -Recurse -Force platformio\packages\framework-arduinopico\docs
 Remove-Item -Recurse -Force platformio\packages\framework-arduino-avr\firmwares
 Remove-Item -Recurse -Force platformio\packages\framework-arduino-avr\bootloaders
-Remove-Item -Recurse -Force platformio\packages\framework-arduinoespressif32\tools\sdk\esp32c3
-Remove-Item -Recurse -Force platformio\packages\framework-arduinoespressif32\tools\sdk\esp32s2
-Remove-Item -Recurse -Force platformio\packages\framework-arduinoespressif32\tools\sdk\esp32s3
 Copy-Item ..\windows\* platformio
 tar cf platformio.tar platformio python
 cd ..\default
